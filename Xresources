@@ -1,0 +1,62 @@
+!!! URxvt
+!URxvt*depth:		32
+!URxvt*background:      rgba:3f00/3f00/3f00/dddd
+URxvt*transparent:	true
+URxvt*shading:		20
+URxvt*font:		-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+URxvt*boldFont:		-gohu-gohufont-bold-r-normal--11-80-100-100-c-60-iso10646-1
+URxvt*cursorUnderline:	true
+URxvt*underlineColor:	green
+URxvt*cursorBlink:	true
+!URxvt*cursorColor:	red3
+URxvt*cursorColor:	red3
+URxvt*scrollBar:	false
+URxvt*saveLines:      20480
+URxvt*background:	#1c1c1c
+URxvt*foreground:	#d7d7d7
+
+URxvt*color0:         #1a1a1a
+URxvt*color1:         #ba8b8b
+URxvt*color2:         #86af80
+URxvt*color3:         #c6d01e
+URxvt*color4:         #3c8ec4
+URxvt*color5:         #9a70b2
+URxvt*color6:         #9fc1cc
+URxvt*color7:         #c6c6c6
+URxvt*color8:         #71a3b7
+URxvt*color9:         #e5505f
+URxvt*color10:        #8cba87
+URxvt.color11:        #e0d95c
+URxvt*color12:        #5899c4
+URxvt.color13:        #ad73ba
+URxvt*color14:        #338eaa
+URxvt*color15:        #f7f7f2
+
+
+!!! XTerm
+XTerm*bold:	-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1
+XTerm*boldFont:	-gohu-gohufont-bold-r-normal--11-80-100-100-c-60-iso10646-1
+xterm*cursorUnderline:	true
+xterm*cursorBlink:	true
+xterm*cursorColor:	green
+XTerm*foreground:	#d7d7d7
+XTerm*background:	#1c1c1c
+
+XTerm*saveLines:      20480
+
+XTerm*color0:         #1a1a1a
+XTerm*color1:         #ba8b8b
+XTerm*color2:         #86af80
+XTerm*color3:         #c6d01e
+XTerm*color4:         #3c8ec4
+XTerm*color5:         #9a70b2
+XTerm*color6:         #9fc1cc
+XTerm*color7:         #c6c6c6
+XTerm*color8:         #71a3b7
+XTerm*color9:         #e5505f
+XTerm*color10:        #8cba87
+XTerm.color11:        #e0d95c
+XTerm*color12:        #5899c4
+XTerm.color13:        #ad73ba
+XTerm*color14:        #338eaa
+XTerm*color15:        #f7f7f2

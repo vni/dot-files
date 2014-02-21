@@ -1,0 +1,4 @@
+"highlight jkCxxFunctionName ctermfg=155
+"highlight jkCxxFunctionName cterm=bold
+syntax match jkCxxFunctionName /^\w\+::\~\?\w\+(/me=e-1
+highlight link jkCxxFunctionName Type

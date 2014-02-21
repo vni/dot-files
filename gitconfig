@@ -1,0 +1,17 @@
+[user]
+	name = mvasylchyshyn
+	email = mykola.vasylchyshyn@globallogic.com
+[color]
+	ui = true
+[color "diff"]
+	meta = blue black bold
+[alias]
+	ll = log --oneline
+	l = log
+	s = status
+	d = diff
+	a = add
+	c = commit
+	cm = commit -m
+	b = branch
+	co = checkout
