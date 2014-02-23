@@ -1,6 +1,6 @@
 [user]
-	name = mvasylchyshyn
-	email = mykola.vasylchyshyn@globallogic.com
+	name = Nikolay Vasylchyshyn
+	email = younghead@ukr.net
 [color]
 	ui = true
 [color "diff"]
@@ -9,9 +9,9 @@
 	ll = log --oneline
 	l = log
 	s = status
-	d = diff
 	a = add
+	d = diff
 	c = commit
 	cm = commit -m
-	b = branch
 	co = checkout
+	b = branch
