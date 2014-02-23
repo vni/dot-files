@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setxkbmap -layout "us,ru,ua" -option "grp:switch,grp:caps_toggle,grp_led:caps"

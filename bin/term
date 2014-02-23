@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec xterm -bg "#000000" -fg "#ffffee" -bc -cr green3 -fn "-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1" -geometry 120x50+350+100 $*
+#exec xterm -bg "#111111" -fg "#ffffee" -bc -cr green3 -fn "-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1" -geometry 120x70+500+50 $*
