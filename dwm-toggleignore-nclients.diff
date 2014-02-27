@@ -1,0 +1,98 @@
+diff --git a/dwm.c b/dwm.c
+index 1bbb4b3..035e62c 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -91,7 +91,7 @@ struct Client {
+ 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+ 	int bw, oldbw;
+ 	unsigned int tags;
+-	Bool isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
++	Bool isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isignored;
+ 	Client *next;
+ 	Client *snext;
+ 	Monitor *mon;
+@@ -210,6 +210,7 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
++static void toggleignore(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void unfocus(Client *c, Bool setfocus);
+@@ -693,8 +694,9 @@ dirtomon(int dir) {
+ void
+ drawbar(Monitor *m) {
+ 	int x, xx, w;
+-	unsigned int i, occ = 0, urg = 0;
++	unsigned int i, occ = 0, urg = 0, nclients = 0;
+ 	Client *c;
++	char nclients_str[80];
+ 
+ 	for(c = m->clients; c; c = c->next) {
+ 		occ |= c->tags;
+@@ -714,6 +716,15 @@ drawbar(Monitor *m) {
+ 	drw_setscheme(drw, &scheme[SchemeNorm]);
+ 	drw_text(drw, x, 0, w, bh, m->ltsymbol, 0);
+ 	x += w;
++
++	for (c = selmon->clients; c; c = c->next)
++		if (ISVISIBLE(c))
++			nclients++;
++	snprintf(nclients_str, sizeof(nclients_str), "%d", nclients);
++	w = TEXTW(nclients_str);
++	drw_text(drw, x, 0, w, bh, nclients_str, 0);
++	x += w;
++
+ 	xx = x;
+ 	if(m == selmon) { /* status is only drawn on selected monitor */
+ 		w = TEXTW(stext);
+@@ -732,6 +743,7 @@ drawbar(Monitor *m) {
+ 			drw_setscheme(drw, m == selmon ? &scheme[SchemeSel] : &scheme[SchemeNorm]);
+ 			drw_text(drw, x, 0, w, bh, m->sel->name, 0);
+ 			drw_rect(drw, x, 0, w, bh, m->sel->isfixed, m->sel->isfloating, 0);
++			drw_rect(drw, x, 8, w, 10, 0, m->sel->isignored, 0);
+ 		}
+ 		else {
+ 			drw_setscheme(drw, &scheme[SchemeNorm]);
+@@ -832,17 +844,17 @@ focusstack(const Arg *arg) {
+ 	if(!selmon->sel)
+ 		return;
+ 	if(arg->i > 0) {
+-		for(c = selmon->sel->next; c && !ISVISIBLE(c); c = c->next);
++		for(c = selmon->sel->next; c && (!ISVISIBLE(c) || c->isignored); c = c->next);
+ 		if(!c)
+-			for(c = selmon->clients; c && !ISVISIBLE(c); c = c->next);
++			for(c = selmon->clients; c && (!ISVISIBLE(c) || c->isignored); c = c->next);
+ 	}
+ 	else {
+ 		for(i = selmon->clients; i != selmon->sel; i = i->next)
+-			if(ISVISIBLE(i))
++			if(ISVISIBLE(i) && !i->isignored)
+ 				c = i;
+ 		if(!c)
+ 			for(; i; i = i->next)
+-				if(ISVISIBLE(i))
++				if(ISVISIBLE(i) && !i->isignored)
+ 					c = i;
+ 	}
+ 	if(c) {
+@@ -1647,6 +1659,19 @@ togglefloating(const Arg *arg) {
+ }
+ 
+ void
++toggleignore(const Arg *arg) {
++	if(!selmon->sel)
++		return;
++	selmon->sel->isignored = !selmon->sel->isignored;
++	/*
++	if (selmon->sel->isignored) {
++		XSetWindowBorder(dpy, c->win, scheme[SchemeNorm].border->rgb);
++	}
++	*/
++	drawbar(selmon);
++}
++
++void
+ toggletag(const Arg *arg) {
+ 	unsigned int newtags;
+ 
