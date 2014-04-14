@@ -43,7 +43,7 @@ let g:zenburn_force_dark_Background = 1
 
 nnoremap <silent> <F10> :cscope add ~/local/cscope/uestub/cscope.out<CR>
 
-function CS(dbname)
+function! CS(dbname)
 	let csdb_name = $HOME . "/local/cscope/" . a:dbname . "/cscope.out"
 	execute 'cscope add ' . csdb_name
 endfunction
@@ -52,17 +52,17 @@ endfunction
 " nnoremap <silent> <Leader>ue    :call CS("uestub")<CR>
 " nnoremap <silent> <Leader>linux :call CS("linux")<CR>
 
-command CSetm   :call CS("etm")
-command CSue    :call CS("uestub")
-command CSnue    :call CS("new-uestub")
-command CSlinux :call CS("linux")
-command CSdwm	:call CS("dwm")
-command CSsqn	:call CS("sequansd")
+command! CSetm    :call CS("etm")
+command! CSue     :call CS("uestub")
+command! CSnue    :call CS("new-uestub")
+command! CSlinux  :call CS("linux")
+command! CSdwm	  :call CS("dwm")
+command! CSsqn	  :call CS("sequansd")
 
 set cmdwinheight=15
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function s:RunShellCommand(cmdline)
+function! s:RunShellCommand(cmdline)
 	echo a:cmdline
 	let expanded_cmdline = a:cmdline
 	for part in split(a:cmdline, ' ')
@@ -161,4 +161,4 @@ function! ToggleCursorLine()
 		set cursorline
 	endif
 endfunction
-nnoremap <silent> <Leader>cl :call ToggleCursorLine()<CR>
+nnoremap <silent> \cl :call ToggleCursorLine()<CR>

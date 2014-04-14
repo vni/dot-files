@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export LANG=ru_RU.UTF-8
+export LANGUAGE=C
+
 TERMBG="#111111"
 TERMFG="#FFFFEE"
 TERMCC="green3"
@@ -32,6 +35,10 @@ esac
 # fi
 TERMBG="#1c1c1c"
 TERMFG="#d7d7d7"
+TERMFG="#FFFFEE"
+
+#TERMBG="#FFFFEE"
+#TERMFG="#1c1c1c"
 
 TERMCC="red3"
 case $(($RANDOM % 3)) in
@@ -40,26 +47,33 @@ case $(($RANDOM % 3)) in
 	2) TERMCC="green" ;;
 esac
 
+TERMCC="red3"
+
+# Blinking cursor  -bc
+# Underline cursor -uc
+CURSORTYPE="-bc -uc"
+CURSORTYPE="-bc"
+
 case $(($RANDOM % 7)) in
 	0)  # center
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+500+30 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 120x30+500+30 $*
 	;;
 	1)  # top left corner
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x50+0+20 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 100x50+0+20 $*
 	;;
 	2)  # top right corner
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x50+1000+20 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 100x50+1000+20 $*
 	;;
 	3)  # bottom left corner
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x30+0+600 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 100x30+0+600 $*
 	;;
 	4)  # bottom left corner
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x30+1000+600 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 100x30+1000+600 $*
 	;;
 	5)
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+500+300 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 120x30+500+300 $*
 	;;
 	6)
-		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+600+200 $*
+		exec xterm $CURSORTYPE -bg $TERMBG -fg $TERMFG -cr $TERMCC -fn $FONT -geometry 120x30+600+200 $*
 	;;
 esac

@@ -5,7 +5,7 @@ if xrandr | grep -q 'HDMI1 connected'; then
 	#xrandr --output HDMI1 --auto --output LVDS1 --auto
 	#wallpapers.sh ~/local/wallpapers/1920x1200/ &
 	#wallpapers.sh ~/local/wallpapers/1920x1200/ &
-else
+#else
 	#sirds-wallpaper.sh &
 	#wallpapers.sh ~/local/wallpapers/1600x900/ &
 fi
@@ -44,17 +44,12 @@ xsetroot -solid '#223333'
 
 xrdb ~/.Xresources
 
-#### DWM STATUS LINE ##################################################################################
-while true; do
-	xsetroot -name "`date '+%Y-%b-%d    %H:%M'`"
-	sleep 1
-done &
-
-exec $HOME/local/bin/dwm
+#xrandr --dpi 138/eDP1
 
 # brightness
 #sudo set-brightness.sh
 
+#### DWM STATUS LINE ##################################################################################
 ### STATUS LINE FUNCTIONS ###
 
 battery() {
