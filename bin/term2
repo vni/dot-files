@@ -1,0 +1,91 @@
+#!/bin/bash
+
+#UNDERLINE_CURSOR="-cr" # -cr cursor color
+UNDERLINE_CURSOR="-uc"
+UNDERLINE_CURSOR=""
+BLINKING_CURSOR="-bc"
+BLINKING_CURSOR=""
+CURSOR_COLOR="-cr #FF4422"
+
+FONT="-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1"
+case $(basename $0) in
+	mm|nn|miniterm)
+		FONT="-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1"
+		;;
+	*)
+		FONT="-gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1"
+		;;
+esac
+
+exec xterm -bg "#000000" -fg "#d7d7d7" -selbg "#222222" -selfg "#FF00FF" $CURSOR_COLOR $BLINKING_CURSOR $UNDERLINE_CURSOR -fn $FONT $*
+exec xterm -bc $UNDERLINE_CURSOR -fn $FONT $*
+exec xterm -bc -cr $TERMCC $UNDERLINECURSOR -fn $FONT -geometry 120x30+500+30 $*
+
+#TERMBG="#111111"
+#TERMBG="#443322"
+#TERMFG="#FFFFEE"
+#TERMCC="green3"
+
+#case $(($RANDOM % 3)) in
+#	0) TERMBG="#111111" ;;
+#	1) TERMBG="#181818" ;;
+#	#2) TERMBG="#222222" ;;
+#	2) TERMBG="#111111" ;;
+#esac
+
+#case $(($RANDOM % 3)) in
+#	0) TERMCC="green" ;;
+#	1) TERMCC="green3" ;;
+#	2) TERMCC="red" ;;
+#esac
+
+# if [ $(basename $0) == "mm" ]; then
+# 	FONT="-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso10646-1"
+# fi
+#TERMBG="#1c1c1c"
+#TERMFG="#d7d7d7"
+
+
+#case $(($RANDOM % 5)) in
+#	0) TERMBG="#111111" ;;
+#	1) TERMBG="#1c1c1c" ;;
+#	2) TERMBG="#181818" ;;
+#	3) TERMBG="#222222" ;;
+#	4) TERMBG="#111111" ;;
+#	#5) TERMBG="#281811" ;;
+#	#6) TERMBG="#112811" ;;
+#	#7) TERMBG="#282811" ;;
+#esac
+
+#TERMBG="#222222"
+
+#TERMCC="red3"
+#case $(($RANDOM % 3)) in
+#	0) TERMCC="red" ;;
+#	1) TERMCC="yellow" ;;
+#	2) TERMCC="green" ;;
+#esac
+
+#case $(($RANDOM % 7)) in
+#	0)  # center
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+500+30 $*
+#	;;
+#	1)  # top left corner
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x50+0+20 $*
+#	;;
+#	2)  # top right corner
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x50+1000+20 $*
+#	;;
+#	3)  # bottom left corner
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x30+0+600 $*
+#	;;
+#	4)  # bottom left corner
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 100x30+1000+600 $*
+#	;;
+#	5)
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+500+300 $*
+#	;;
+#	6)
+#		exec xterm -bg $TERMBG -fg $TERMFG -bc -cr $TERMCC -uc -fn $FONT -geometry 120x30+600+200 $*
+#	;;
+#esac

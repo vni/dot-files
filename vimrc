@@ -41,7 +41,7 @@ let g:zenburn_high_Contrast = 1
 let g:zenburn_alternate_Visual = 1
 let g:zenburn_force_dark_Background = 1
 
-nnoremap <silent> <F10> :cscope add ~/local/cscope/uestub/cscope.out<CR>
+"nnoremap <silent> <F10> :cscope add ~/local/cscope/uestub/cscope.out<CR>
 
 function! CS(dbname)
 	let csdb_name = $HOME . "/local/cscope/" . a:dbname . "/cscope.out"
@@ -162,3 +162,60 @@ function! ToggleCursorLine()
 	endif
 endfunction
 nnoremap <silent> \cl :call ToggleCursorLine()<CR>
+
+"TagBar
+let g:tagbar_usearrows = 1
+nnoremap <F8> :TagbarToggle<CR>
+nnoremap <silent> <F10> :qa<CR>
+
+function! ToggleListMode()
+    if &list == 0
+        set list
+    else
+        set nolist
+    endif
+endfunction
+nnoremap <silent> \lm :call ToggleListMode()<CR>
+
+" no cursorline by default
+"set cursorline
+
+"indentLines
+"nnoremap <Leader>il :IndentLinesToggle<CR>
+let g:indentLine_char = '|'
+let g:indentLine_first_char = '|'
+
+set tabpagemax=100
+
+hi CursorLine ctermbg=236
+
+"set nowrap sidescroll=5
+set listchars+=precedes:<,extends:>
+set listchars+=tab:>-,trail:-
+nnoremap <C-L> 2zl
+nnoremap <C-H> 2zh
+
+""" augroup vimrc_autocmds
+"""    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"""    autocmd BufEnter * match OverLength /\%74v.*/
+""" augroup END
+
+set statusline+=[%{&fo}]
+
+"set wrapscan
+
+autocmd BufWinLeave ?* mkview
+autocmd BufWinEnter ?* loadview
+
+hi Search cterm=none ctermbg=172 ctermfg=black
+
+hi CursorLine ctermbg=180 ctermfg=black
+
+function! ToggleColorColumn()
+        if &colorcolumn == 0
+                set colorcolumn=81
+        else
+                set colorcolumn=0
+        endif
+endfunction
+nnoremap <silent> \cc :call ToggleColorColumn()<CR>
