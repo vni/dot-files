@@ -1,6 +1,7 @@
 set mouse=a
-set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
-set number numberwidth=5
+"set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+"set number numberwidth=5
 set nobackup nowritebackup noswapfile
 set showmode showcmd
 
@@ -9,10 +10,12 @@ nnoremap - dd
 set laststatus=2
 "set statusline=\ \ \ \ \ %t\ %r\ %m%=\%l/%L\ %p%2%
 set statusline=\ \ \ \ \ %f\ %r\ %m%=\%l/%L\ %P
-set showtabline=2
+set showtabline=1
 "set tabline="%t"
 
-filetype plugin on
+filetype on
+"filetype plugin on
+filetype plugin indent on
 
 set t_Co=256
 
@@ -22,18 +25,30 @@ set incsearch hlsearch
 set scrolloff=2
 
 nnoremap <silent> <F8> :NERDTreeToggle<CR>
+nnoremap <silent> <F9> :NERDTree<CR> :NERDTreeMirror<CR>
+nnoremap \T :NERDTree<CR>:NERDTreeMirror<CR>
+
+nnoremap <silent> <F7> :TlistToggle<CR>
+nnoremap \tl :TlistToggle<CR>
 nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>T :tabclose<CR>
 nnoremap <Leader>v :tabnew ~/.vimrc<CR>
 nnoremap <Leader>V :source ~/.vimrc<CR>
-"noremap <Up> <C-Y>
-"noremap <Down> <C-E>
+
+nnoremap <PageUp> :tabprev<CR>
+nnoremap <PageDown> :tabnext<CR>
+
+noremap <Up> <C-Y>
+noremap <Down> <C-E>
 noremap <C-K> <C-Y>
 noremap <C-J> <C-E>
+nnoremap <S-Left> <t_Enter> " Shift + Left is now acts as Enter
 nnoremap <CR> <C-E>
 "nnoremap <Space> <C-F>
 nnoremap <Tab> <C-Y>
 nnoremap <BackSpace> <C-Y>
+"nnoremap <Up> <C-Y>
+"nnoremap <Down> <C-E>
 
 
 " zenburn colorscheme tweaks
@@ -42,6 +57,7 @@ let g:zenburn_alternate_Visual = 1
 let g:zenburn_force_dark_Background = 1
 
 "nnoremap <silent> <F10> :cscope add ~/local/cscope/uestub/cscope.out<CR>
+nnoremap <silent> <F10> :qa<CR>
 
 function! CS(dbname)
 	let csdb_name = $HOME . "/local/cscope/" . a:dbname . "/cscope.out"
@@ -119,13 +135,18 @@ highlight Visual    ctermfg=0      ctermbg=210  cterm=none
 highlight VisualNOS ctermfg=0      ctermbg=210  cterm=none
 highlight IncSearch ctermfg=0      ctermbg=200  cterm=none
 highlight Search    ctermfg=none   ctermbg=none cterm=underline
+highlight NonText   ctermbg=none
+highlight Normal    ctermbg=none
 
 nnoremap = :noh<CR>
 
 "set exrc
 
 syntax on
-colorscheme my_jellybeans
+"colorscheme my_jellybeans
+"colorscheme default
+"colorscheme delek
+"colorscheme cleanroom
 
 function! MyTabLine()
 	" numberwidth gap of spaces
@@ -163,59 +184,41 @@ function! ToggleCursorLine()
 endfunction
 nnoremap <silent> \cl :call ToggleCursorLine()<CR>
 
-"TagBar
-let g:tagbar_usearrows = 1
-nnoremap <F8> :TagbarToggle<CR>
-nnoremap <silent> <F10> :qa<CR>
+if has("gui_running")
+	set guioptions-=m " remove menubar
+	set guioptions-=T " remove toolbar
+	set guioptions-=r " remove right-hand scroll bar
+	set guioptions-=L " remove left-hand scroll bar
 
-function! ToggleListMode()
-    if &list == 0
-        set list
-    else
-        set nolist
-    endif
-endfunction
-nnoremap <silent> \lm :call ToggleListMode()<CR>
-
-" no cursorline by default
-"set cursorline
-
-"indentLines
-"nnoremap <Leader>il :IndentLinesToggle<CR>
-let g:indentLine_char = '|'
-let g:indentLine_first_char = '|'
-
-set tabpagemax=100
-
-hi CursorLine ctermbg=236
-
-"set nowrap sidescroll=5
-set listchars+=precedes:<,extends:>
-set listchars+=tab:>-,trail:-
-nnoremap <C-L> 2zl
-nnoremap <C-H> 2zh
-
-""" augroup vimrc_autocmds
-"""    autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"""    autocmd BufEnter * match OverLength /\%74v.*/
-""" augroup END
-
-set statusline+=[%{&fo}]
-
-"set wrapscan
-
-autocmd BufWinLeave ?* mkview
-autocmd BufWinEnter ?* loadview
-
-hi Search cterm=none ctermbg=172 ctermfg=black
-
-hi CursorLine ctermbg=180 ctermfg=black
+	set guifont=DejaVu\ Sans\ Mono\ 14
+endif
 
 function! ToggleColorColumn()
-        if &colorcolumn == 0
-                set colorcolumn=81
-        else
-                set colorcolumn=0
-        endif
+	if &colorcolumn
+		set colorcolumn=0
+	else
+		set colorcolumn=81
+	end
 endfunction
-nnoremap <silent> \cc :call ToggleColorColumn()<CR>
+nnoremap \cc :call ToggleColorColumn()<CR>
+
+function! ToggleListMode()
+	if &list
+		set nolist
+	else
+		set list
+	endif
+endfunction
+nnoremap \lm :call ToggleListMode()<CR>
+
+"let g:filetype_pl="prolog"
+autocmd BufNewFile,BufRead *.pl set filetype=prolog
+
+" jk*> taglist configuration
+let Tlist_Use_Right_Window=1
+let Tlist_WinWidth=40
+
+"nnoremap ; :
+"nnoremap : ;
+
+set nonu
