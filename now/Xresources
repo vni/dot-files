@@ -1,0 +1,14 @@
+XTerm*termName: xterm-256color
+
+*faceName: Source Code Pro
+*faceSize: 16
+
+XTerm*foreground: #99dddd
+!XTerm*foreground: #99eecc
+XTerm*background: #182828
+
+XTerm*selectToClipboard: true
+
+XTerm*VT100.*translations:      #override \
+        Shift Ctrl C: select-end(CLIPBOARD, CUT_BUFFER0) \n\
+        Shift Ctrl V: insert-selection(CLIPBOARD, CUT_BUFFER0)

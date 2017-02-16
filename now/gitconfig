@@ -1,0 +1,15 @@
+[alias]
+	a=add
+	b=branch
+	c=commit
+	d=diff
+	f=fetch
+	l=log
+	s=status
+	co=checkout
+	r=revert
+[push]
+	default = simple
+[user]
+	email = younghead@ukr.net
+	name = Mykola Vasyclhyshyn

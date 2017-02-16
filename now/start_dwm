@@ -1,0 +1,17 @@
+#!/bin/sh
+
+xrdb -load $HOME/.Xresources
+
+if xrandr | grep -q '^HDMI3 connected'; then
+	xrandr-set-above
+	echo "xrandr-set-above *SUCCEED*" >> ~/start_dwm.log
+else
+	echo "xrandr-set-above *FAILED*" >> ~/start_dwm.log
+fi
+
+while true; do
+	xsetroot -name `date`
+	sleep 2
+done &
+
+exec dwm
