@@ -1,0 +1,43 @@
+[core]
+    pager=less -F -X -R
+
+[alias]
+    a=add
+    amend=commit --amend
+    b=branch
+    c=commit
+    d=diff
+    e=help
+    f=fetch
+    g=grep
+    h=stash
+    l=log
+    m=merge
+    r=revert
+    rst=reset
+    res=reset
+    s=status
+    t=tag
+    rhard=reset --hard
+    rsoft=reset --soft
+
+    co=checkout
+    pu=pull
+    ph=push
+    sh=show
+
+    sub=submodule
+    sth=stash
+
+    lg1=log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg2=log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
+    lg3=log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit
+    hist=log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    stash-list=stash list --pretty=format:'%Cblue%gd%Cred: %C(yellow)%s'q
+
+[push]
+    default = simple
+
+[user]
+    email = John.Doe@best.mail.com
+    name = John Doe
