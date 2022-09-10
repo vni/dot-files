@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case $1 in
+  ru)
+    setxkbmap -layout "us,ru" -option "grp:switch,grp:caps_toggle,grp_led:caps"
+    ;;
+  ua)
+    setxkbmap -layout "us,ua" -option "grp:switch,grp:caps_toggle,grp_led:caps"
+    ;;
+  *)
+    setxkbmap -layout "us,ru,ua" -option "grp:switch,grp:caps_toggle,grp_led:caps"
+    ;;
+esac
