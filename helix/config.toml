@@ -1,0 +1,72 @@
+#theme = "autumn_night"
+theme = "acme"
+
+[editor]
+line-number = "absolute" # "relative"
+gutters = ["diagnostics"]
+mouse = true
+color-modes = true
+true-color = true
+auto-info = true
+cursorline = true
+auto-pairs = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "file-name", "spinner"]
+center = []
+#center = ["file-name"]
+right = ["position", "diagnostics", "selections"]
+
+[editor.lsp]
+display-messages = true
+
+[editor.indent-guides]
+#render = true
+
+[keys.normal]
+C-y = "scroll_up"
+C-e = "scroll_down"
+S-g = "goto_last_line"
+0 = "goto_line_start"
+#^ = "goto_line_start"
+#\\^ = "goto_first_nonwhitespace"
+#$ = "goto_line_end"
+"backspace" = "scroll_up"
+"ret" = "scroll_down"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
