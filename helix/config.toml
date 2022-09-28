@@ -1,14 +1,18 @@
+theme = "jk_theme"
+#theme = "emacs"
+#theme = "fleetish"
+#theme = "dracula_at_night"
 #theme = "autumn_night"
-theme = "acme"
+#theme = "acme"
 
 [editor]
 line-number = "absolute" # "relative"
-gutters = ["diagnostics"]
+gutters = ["line-numbers", "diagnostics"]
 mouse = true
 color-modes = true
 true-color = true
 auto-info = true
-cursorline = true
+cursorline = false
 auto-pairs = false
 
 [editor.cursor-shape]
@@ -23,7 +27,7 @@ hidden = false
 left = ["mode", "file-name", "spinner"]
 center = []
 #center = ["file-name"]
-right = ["position", "diagnostics", "selections"]
+right = ["position", "position-percentage", "diagnostics", "selections"]
 
 [editor.lsp]
 display-messages = true
@@ -41,32 +45,3 @@ S-g = "goto_last_line"
 #$ = "goto_line_end"
 "backspace" = "scroll_up"
 "ret" = "scroll_down"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
