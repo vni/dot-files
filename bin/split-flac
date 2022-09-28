@@ -1,0 +1,4 @@
+#!/bin/sh
+
+FNAME="$1"
+shnsplit -f "$FNAME.cue" -t "%n-%t" -o flac "$FNAME.flac"

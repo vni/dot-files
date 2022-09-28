@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# generate tags reference file for .cpp project
+
+ctags -R --c++-kinds=+p --fields=iaS --extra=+q "$*"

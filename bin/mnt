@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# mount the partition to mnt
+# Usage: mnt sdXY
+
+partition=$1
+echo "partition: $partition"
+if [ -z "$partition" ]; then
+    echo "\033[31;1m*ERROR* \033[31mPass partition to mount as a command line argument.\033[0m"
+    exit 1
+fi
+sudo mount /dev/$partition /mnt -o utf8,user
