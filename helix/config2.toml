@@ -1,0 +1,40 @@
+#theme = "sonokai_atlantis"
+#theme = "acme"
+#theme = "autumn_night"
+#theme = "ayu_light"
+#theme = "adwaita-dark"
+#theme = "jk_theme"
+theme = "ayu_mirage"
+#theme = "onelight"
+
+[editor]
+mouse = true
+bufferline = "multiple" # "always"
+auto-pairs = false
+middle-click-paste = true
+true-color = true
+
+[editor.soft-wrap]
+enable = true
+
+[editor.search]
+smart-case = true
+
+[keys.normal]
+C-p = ":buffer-previous"
+C-n = ":buffer-next"
+C-w = ":buffer-close"
+D = ["extend_to_line_end", "change_selection"]
+"tab" = "goto_next_function"
+"S-tab" = "goto_prev_function"
+y = "yank_main_selection_to_clipboard"
+p = "paste_clipboard_before"
+"." = "repeat_last_motion"
+#C-s = ":w"
+C-e = "scroll_down"
+C-y = "scroll_up"
+"0" = "goto_first_nonwhitespace" ## This tree are inspired by
+"^" = "goto_line_start"          ## vi, vim, neovim, but reversed
+"$" = "goto_line_end"            ## for my own amusement
+backspace = "scroll_up"
+ret = "scroll_down"
